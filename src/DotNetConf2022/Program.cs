@@ -1,9 +1,12 @@
-﻿var result = AddAll(new[] { 1, .2, 3, 4, 5 });
+﻿var result = AddAll(new[] { 1, 2, 3, 4, 5 });
 WriteLine(result);
 
-T AddAll<T>(T[] values) where T : INumber<T> => values switch
+int AddAll(int[] values)
 {
-    [] => T.Zero,
-    [var first] => first,
-    [var first, var second] => first + second,
-};
+    int result = 0;
+    foreach (var value in values)
+    {
+        result += value;
+    }
+    return result;
+}
