@@ -1,8 +1,10 @@
-﻿var person = new Person { FirstName = "Tracy" };
+﻿var person = new Person { FirstName = "Tracy", LastName = "Smith" };
 
-public class Person
+[Person(FirstName = "Tracy", LastName = "Smith")]
+
+public class Person : Attribute
 {
-    public string FirstName { get; init; }
+    required public string FirstName { get; init; }
     public string? MiddleName { get; init; }
-    public string LastName { get; init; }
+    required public string LastName { get; init; }
 }

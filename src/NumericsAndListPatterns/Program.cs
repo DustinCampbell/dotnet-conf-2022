@@ -1,12 +1,8 @@
-﻿var result = AddAll(new[] { 1, 2, 3, 4, 5 });
+﻿var result = AddAll(new[] { 1, .2, 3, 4, 5 }.AsSpan());
 WriteLine(result);
 
-int AddAll(int[] values)
+T AddAll<T>(Span<T> values) where T : INumber<T> => values switch
 {
-    int result = 0;
-    foreach (var value in values)
-    {
-        result += value;
-    }
-    return result;
-}
+    [] => T.Zero,
+    [var first, .. var rest] => first + AddAll(rest),
+};
